@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>এড প্রদর্শন ওয়েবসাইট - মেইন পেজ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        #ads {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        // পয়েন্ট আপডেট ফাংশন
+        function updateUserPoints() {
+            const points = parseInt(localStorage.getItem('points')) || 0;
+            localStorage.setItem('points', points + 1);
+            document.getElementById('pointsDisplay').innerText = `আপনার বর্তমান পয়েন্ট: ${points + 1}`;
+        }
+
+        // প্রতি ৩০ সেকেন্ডে পয়েন্ট আপডেট হবে
+        setInterval(updateUserPoints, 30000);
+
+        // পেজ লোড হওয়ার পরে ব্যবহারকারীর তথ্য সংগ্রহ করা
+        window.onload = function() {
+            const username = localStorage.getItem('username');
+            const points = localStorage.getItem('points');
+            if (username) {
+                document.getElementById('usernameDisplay').innerText = "স্বাগতম, " + username;
+                document.getElementById('pointsDisplay').innerText = `আপনার বর্তমান পয়েন্ট: ${points}`;
+                startAds(); // বিজ্ঞাপন শুরু
+            } else {
+                window.location.href = 'index.html'; // লগিন না হলে রিডাইরেক্ট করুন
+            }
+        }
+
+        function startAds() {
+            document.getElementById('ads').style.display = 'block'; // বিজ্ঞাপন দেখান
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1 id="usernameDisplay">স্বাগতম!</h1>
+    </header>
+
+    <section id="ads" style="display: none;">
+        <h2>বিজ্ঞাপনসমূহ</h2>
+        <div>
+            <!-- Popunder Ad Unit -->
+            <script type='text/javascript' src='//pl26782381.profitableratecpm.com/10/a7/e5/10a7e553423c269e65732ecb3e1b3a7c.js'></script>
+
+            <!-- Native Banner Ad Unit -->
+            <script async="async" data-cfasync="false" src='//pl26782170.profitableratecpm.com/7d8154d36d688452864be0aaae0a4f9c/invoke.js'></script>
+            <div id="container-7d8154d36d688452864be0aaae0a4f9c" style="width: 100%; height: auto; margin: auto;"></div>
+
+            <!-- 160x600 Banner Ad Unit -->
+            <div style="text-align: center; margin: 20px 0;">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': '4f78adf1a64a319757707b133cccb09d',
+                        'format': 'iframe',
+                        'height': 600,
+                        'width': 160,
+                        'params': {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/4f78adf1a64a319757707b133cccb09d/invoke.js"></script>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>তথ্য</h2>
+        <p id="pointsDisplay">আপনার বর্তমান পয়েন্ট: 0</p>
+    </section>
+
+</body>
+</html>
